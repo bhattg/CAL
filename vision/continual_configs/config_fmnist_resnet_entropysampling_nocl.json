@@ -1,0 +1,40 @@
+{
+	"model": {
+		"architecture": "resnet18",
+		"channel": 1,
+		"target_classes": 10
+	},
+	"train_parameters": {
+		"lr": 0.05,
+		"batch_size": 64,
+		"n_epoch": 100,
+		"max_accuracy": 0.99,
+		"isreset": true,
+		"islogs":  true,
+		"isverbose":  true,
+		"logs_location": "./logs.txt"
+	},
+
+	"active_learning":{
+		"strategy": "margin_sampling",
+		"budget": 3500,
+		"rounds": 6,
+		"initial_points": 3500,
+		
+		"strategy_args":{	
+			"batch_size" : 20, 
+			"lr":0.01
+		}
+	},
+
+	"continual_learning":{
+		"replay_strategy": "no_cl", 
+		"replay_size": 0,
+		"first_n_epoch": 100,
+		"n_epoch": 15
+	},
+
+	"dataset":{
+		"name":"fmnist"
+	}
+}

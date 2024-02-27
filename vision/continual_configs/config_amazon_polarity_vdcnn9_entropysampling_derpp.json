@@ -1,0 +1,43 @@
+{
+        "model": {
+                "architecture": "vdcnn9-maxpool",
+                "target_classes": 5
+        },
+        "train_parameters": {
+                "lr": 1e-3,
+                "batch_size": 128,
+                "n_epoch": 6,
+                "max_accuracy": 0.99,
+                "isreset": false,
+                "islogs":  true,
+                "isverbose":  true,
+                "logs_location": "./logs.txt",
+                "optimizer":  "adam"
+        },
+
+        "active_learning":{
+                "strategy": "entropy_sampling",
+                "budget": 50000,
+                "rounds": 20,
+                "initial_points": 50000,
+
+                "strategy_args":{
+                        "batch_size" : 20,
+                        "lr":0.01
+                }
+        },
+
+        "continual_learning":{
+                "replay_strategy": "derpp",
+                "alpha": 1,
+                "beta": 1,
+                "replay_size": 128,
+                "first_n_epoch": 6,
+                "n_epoch": 6,
+                "target_classes": 5
+        },
+
+        "dataset":{
+                "name":"amazon-polarity-review"
+        }
+}

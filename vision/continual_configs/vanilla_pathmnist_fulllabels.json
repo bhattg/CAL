@@ -1,0 +1,40 @@
+{
+	"model": {
+		"architecture": "resnet18",
+		"target_classes": 9
+	},
+	"train_parameters": {
+		"lr": 0.02,
+		"batch_size": 128,
+		"n_epoch": 100,
+		"max_accuracy": 0.9999,
+		"isreset": true,
+		"islogs":  true,
+		"isverbose":  true,
+		"logs_location": "./logs.txt",
+        "optimzier" : "adam"
+	},
+
+	"active_learning":{
+		"strategy": "entropy_sampling",
+		"budget": 4500,
+		"rounds": 10,
+		"initial_points": 4500,
+		
+		"strategy_args":{	
+			"batch_size" : 20, 
+			"lr":0.01
+		}
+	},
+
+	"continual_learning":{
+		"replay_strategy": "no_cl", 
+		"replay_size": 20,
+		"first_n_epoch": 100,
+		"n_epoch": 100
+	},
+
+	"dataset":{
+		"name":"pathmnist"
+	}
+}

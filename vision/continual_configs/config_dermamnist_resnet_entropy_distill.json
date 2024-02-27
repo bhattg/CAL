@@ -1,0 +1,43 @@
+{
+	"model": {
+		"architecture": "resnet18",
+		"target_classes": 7
+	},
+	"train_parameters": {
+		"lr": 0.001,
+		"batch_size": 128,
+		"n_epoch": 100,
+		"max_accuracy": 0.99,
+		"isreset": false,
+		"islogs":  true,
+		"isverbose":  true,
+		"logs_location": "./logs.txt",
+        "optimizer":"adam"
+	},
+
+	"active_learning":{
+		"strategy": "entropy_sampling",
+		"budget": 350,
+		"rounds": 10,
+		"initial_points": 350,
+		
+		"strategy_args":{	
+			"batch_size" : 20, 
+			"lr":0.01
+		}
+	},
+
+	"continual_learning":{
+		"replay_strategy": "distill",
+		"alpha": 0.25,
+		"beta": 0.75,
+		"replay_size": 128,
+		"first_n_epoch": 100,
+		"n_epoch": 100,
+		"target_classes": 7
+	},
+
+	"dataset":{
+		"name":"dermamnist"
+	}
+}
