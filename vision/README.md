@@ -16,7 +16,8 @@ On the implementation of Active Learning strategies, we use [DISTIL framework](h
 
 Implementing a custom CAL algorithm requires two things -- writing strategy file similar to `distil/utils/continual_learning/distill.py`, followed by a config file in `continual_configs/`. Config `.json` file that provides a list of configuration will be used for the Continual Learning algorithm. For example, refer to the following - 
 
-`{
+```
+{
 	"model": {
 		"architecture": "resnet18",
 		"target_classes": 10
@@ -57,7 +58,8 @@ Implementing a custom CAL algorithm requires two things -- writing strategy file
 	"dataset":{
 		"name":"cifar10"
 	}
-}`
+}
+```
 
 Lastly, import the new strategy in `distil/utils/continual_learning/__init__.py`. Note that if a new architecture is implemented, then please make sure to add that in `distil/utils/models/` and import them in `distil/utils/models/__init__.py`
 
@@ -73,7 +75,7 @@ For our experiments in paper, please consider running the following scripts (scr
 
 `./run_experiments_med.sh`
 
-**Note that, for the BERT related experiments, please refer to `nlp/`**
+**Note that, for the BERT related experiments, please refer to `../nlp/`**
 
 
 
